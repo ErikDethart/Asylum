@@ -1,0 +1,12 @@
+if(life_adminlevel < 2 && (getPlayerUID player) != (life_configuration select 0)) exitWith {hint "You are not an admin!";};
+if ((getPlayerUID player) == (life_configuration select 0) && (time - life_last_govmsg) < 900) exitWith {hint "You may only send global messages once every 15 minutes!";};
+private["_msg","_from","_type"];
+_msg = ctrlText 3003;
+if(_msg == "") exitWith {hint "You must enter a message to send!";};
+_type = 4;
+if (life_adminlevel < 2) then { _type = 9; };
+if ((_type == 9) && (count _msg > 250)) exitWith {hint "You cannot send messages longer than 250 characters!"};
+[_msg,name player,_type] remoteExecCall ["life_fnc_clientMessage",-2];
+[] call life_fnc_cellphone;
+hint format["Message Sent To All: %1",_msg];
+if ((getPlayerUID player) == (life_configuration select 0)) then { life_last_govmsg = time; publicVariable "life_last_govmsg"; };
