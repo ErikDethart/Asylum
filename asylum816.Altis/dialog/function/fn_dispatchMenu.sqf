@@ -22,7 +22,7 @@ if (!isNull life_dispatcher && life_dispatcher != player) exitWith { hint format
 
 hint "Logged in as dispatcher.";
 
-[dispatch_chair,player] execVM "Chair\sitdown.sqf";
+[dispatch_chair,player] spawn life_fnc_sitDown;
 
 if(!(createDialog "life_dispatch_menu")) exitWith {};
 
@@ -153,7 +153,7 @@ _map ctrlAddEventHandler ["Draw",'
 	
 	closeDialog 0;
 	["dispatchMap", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
-	[] execVM "Chair\standup.sqf";
+	[] spawn life_fnc_standUp;
 	life_dispatcher = objNull;
 	publicVariable "life_dispatcher";
 	player allowDamage true;

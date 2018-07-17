@@ -513,7 +513,7 @@ if({player distance getMarkerPos format["bounty_%1",_x] < (life_track_radius + 1
 	life_actions pushBack (player addAction ["<t color='#FF0000'>Track APB Target</t>", life_fnc_trackBounty, 9999, 0, false, true, "", ' player distance (getMarkerPos "bounty_9999") < life_track_radius ']);
 };
 // Environmental
-life_actions pushBack (player addAction["<t color='#0099FF'>Sit Down</t>",{[cursorObject,player] execVM "Chair\sitdown.sqf"},true,1,true,true,"""",'player distance cursorObject < 3 && {([str cursorObject,"bench"] call KRON_StrInStr || [str cursorObject,"chair"] call KRON_StrInStr)} ']);
+life_actions pushBack (player addAction["<t color='#0099FF'>Sit Down</t>",{[cursorObject,player] spawn life_fnc_sitDown},true,1,true,true,"""",'player distance cursorObject < 3 && {([str cursorObject,"bench"] call KRON_StrInStr || [str cursorObject,"chair"] call KRON_StrInStr)} ']);
 
 if(surfaceIsWater position player) then {
 	life_actions pushBack (player addAction["<t color='#0099FF'>Collect Water</t>",life_fnc_gatherAction,["saltwater",2],1,false,true,"""",'surfaceIsWater position player && vehicle player == player && (getPosASL player) select 2 < 1']);

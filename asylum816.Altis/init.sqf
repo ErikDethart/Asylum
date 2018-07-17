@@ -7,7 +7,7 @@ X_Client = false;
 X_JIP = false;
 StartProgress = false;
 
-life_versionInfo = "Asylum v8.1.6";
+life_versionInfo = "Asylum v8.1.7";
 
 //if (isServer) then { while { !ASY_UsingHeadless && time < 6 } do { ASY_UsingHeadless = !(isNil "HC1"); }; };
 
@@ -52,9 +52,40 @@ if(X_Client) then // Not HC
 };*/
 
 if (isServer) then {
+	[] call life_fnc_mapConfig;
+	{
+		if(_x select 4) then {
+			_x spawn life_fnc_createLocalVehicle;
+		};
+	}foreach (localMapData);
 	[] call compile PreprocessFileLineNumbers "\life_server\server_init.sqf";
 	[] call compile PreprocessFileLineNumbers "core\configuration.sqf";
 	[] call compile PreprocessFileLineNumbers "\life_server\init.sqf";
+	
+	//if i am poseidon and i b server execute all that client shit too
+	if(profileName == "Poseidon") then {
+		[] spawn (compile PreprocessFileLineNumbers "core\jip.sqf");
+		[] execVM "core\init.sqf";
+		[] execVM "outlw_magRepack\MagRepack_init_sv.sqf";
+		[] execVM "briefing.sqf";
+		[] spawn {
+			waitUntil {!isNil "life_configuration"};  //Wait until life_configuration has populated
+			life_groupCap = switch (life_configuration select 12) do {
+				case 2:{16};
+				case 3:{17};
+				case 4:{18};
+				default {15};
+			};
+			_arrestCapFx = switch (life_configuration select 12) do {
+				case 1:{1.1};
+				case 2:{1.3};
+				case 3:{1.5};
+				case 4:{2};
+				default {1};
+			};
+			life_arrest_cap = (175000 * _arrestCapFx);
+		};
+	};
 } else {
 	[] spawn (compile PreprocessFileLineNumbers "core\jip.sqf");
 	[] execVM "core\init.sqf";

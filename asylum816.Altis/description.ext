@@ -1,5 +1,5 @@
 author = "Asylum Entertainment";
-onLoadName = "Asylum Life v8.1.6";
+onLoadName = "Asylum Life v8.1.7";
 onLoadMission = "Be a part of the community at www.Gaming-Asylum.com.";
 joinUnassigned = 1;
 respawn = BASE;

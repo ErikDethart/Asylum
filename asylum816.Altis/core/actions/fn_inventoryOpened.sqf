@@ -33,4 +33,6 @@ if (!isNull _id) then {
 if (_lk_var) exitWith { hint "You cannot open a house crate while the house doors are locked."; true };
 if ((locked _container) > 1 && playerSide != west) exitWith { hint "The container is locked and cannot be opened!"; true };
 
+_container enableSimulation true;
+
 false

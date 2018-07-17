@@ -111,7 +111,14 @@ if ((life_adminxray == 1) && {life_adminLevel > 1}) then {
 								default {_x getVariable['life_name', _x getVariable['life_name', [name _x] call life_fnc_cleanName]] };
 							};
 						};
-						default {_x getVariable['life_name', [name _x] call life_fnc_cleanName]};
+						default {
+							if(local _x) then {
+								_x getVariable['life_name', ["Uvuvwevwevwe Onyetenyevwe Ugwemuhwem Osas"] call life_fnc_cleanName];//Default name for NPC's, i will likely create a function for assigning npc's a random name automatically with the processMapInfo function.
+							}else{
+								_x getVariable['life_name', [name _x] call life_fnc_cleanName]
+							};
+							
+						};
 					};
 					if !(_hidden) then {
 						if (_x getVariable ["life_title",""] != "") then { _text = format[_x getVariable "life_title", _text]; };

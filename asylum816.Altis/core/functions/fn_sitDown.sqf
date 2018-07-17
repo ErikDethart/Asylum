@@ -41,7 +41,7 @@ life_sitting = _obj;
 _chair setVariable ["sitting", _unit, true];
 
 [_unit,"Crew","switch",0] remoteExecCall ["life_fnc_animSync",-2];
-_action = _unit addAction ["<t color='#0099FF'>Stand Up</t>","Chair\standup.sqf"];
+_action = _unit addAction ["<t color='#0099FF'>Stand Up</t>",{[] spawn life_fnc_standUp}];
 
 waitUntil { isNull life_sitting || !(alive _unit) || player distance (getPos _chair) > 2 };
 

@@ -15,8 +15,8 @@ _ret params [
 	["_name","",[""]],
 	["_PID","",[""]],
 	["_crimes",[],[[]]],
-	["_bounty",0,[0]],
-	["_time",0,[0]]
+	["_bounty",1500,[0]],
+	["_time",300,[0]]
 ];
 
 private _cannibal = ((_crimes findIf {_x select 0 isEqualTo "Cannabalism"}) >- 1);

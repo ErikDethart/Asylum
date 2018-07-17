@@ -59,7 +59,7 @@ if (life_radio_chan > -1) then { [nil,nil,nil,-1] spawn life_fnc_useRadio; };
 player setVariable ["BIS_noCoreConversations", true];
 
 [] call life_fnc_hudUpdate;
-cutText ["","BLACK IN"];
+[] spawn{sleep 3; cutText ["","BLACK IN"];};//Give a few seconds for objects to load in with the dynamic map system...
 
 [] call life_fnc_fetchGear;
 [] call life_fnc_equipGear;

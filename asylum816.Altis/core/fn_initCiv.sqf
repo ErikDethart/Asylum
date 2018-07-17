@@ -88,6 +88,7 @@ else
 			};
 		} forEach ["Rebelop_1","Rebelop_2","Rebelop_3","Rebelop_4","Rebelop_5"];
 		player setPosATL life_worldspace;
+		sleep 5;//We wait 5 seconds to let objects spawn in around them if they have a postion saved in DB
 	}
 	else
 	{

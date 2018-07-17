@@ -5,10 +5,10 @@
 	Description:
 	Changes settings of selected markers from the settings menu.
 */
-private ["_color","_value"];
-_color = param[0,[],[[]]];
-_value = param[1,1,[0]];
-
+params[
+	["_color",[],[[]]],
+	["_value",1,[0]]
+];
 
 {
 	if ((getMarkerColor _x) in _color) then {

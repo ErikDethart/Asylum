@@ -19,6 +19,8 @@ diag_log "::Life Client:: Initialization Variables";
 diag_log "::Life Client:: Variables initialized";
 //[player] execVM "core\client\disable_respawn.sqf";
 //Monitor player chat
+[] call life_fnc_mapConfig;
+[] spawn life_fnc_localMapSystem;
 execVM "core\chatEvents\init.sqf";
 diag_log "::Life Client:: Monitoring player chat input";
 waitUntil {!isNil "aniChatEvents_initated"};
@@ -104,6 +106,7 @@ switch (playerSide) do
 	case civilian:
 	{
 		//Initialize Civilian Settings
+		player enableSimulation false;//we disable simulation for civ so that when they get teleported to their spawn location they freeze in air which gives time for local objects to spawn in
 		_handle = [] spawn life_fnc_initCiv;
 		waitUntil {scriptDone _handle};
 	};
@@ -141,6 +144,7 @@ if (playerSide == civilian) then {
 	[player,life_sidechat,playerSide] remoteExecCall ["ASY_fnc_managesc",2];
 };
 life_ringer = (profileNamespace getVariable["AsylumSettings",[1200,1200,1600,true,false,0.2]]) select 3;
+player enableSimulation true;
 cutText ["","BLACK IN"];
 [] call life_fnc_hudSetup;
 //[player] execVM "core\client\intro.sqf";

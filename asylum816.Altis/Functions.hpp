@@ -93,6 +93,7 @@ class Life_Client_Core
 		class catchFish {};
 		class catchTurtle {};
 		class inventoryOpened {};
+		class inventoryClosed {};
 		class dpFinish {};
 		class dropFishingNet {};
 		class gatherAction {};
@@ -171,6 +172,7 @@ class Life_Client_Core
 		class swatGear {};
 		class detectiveGear {};
 		class recipes {};
+		class mapConfig {};
 
 		//Clothing Store Configs
 		class clothing_cop {};
@@ -332,7 +334,8 @@ class Life_Client_Core
 		class handleDamage {};
 		class handleDowned {};
 		class handleTagged {};
-		//class handleHeal {};
+		class sitDown {};
+		class standUp {};
 		class handleVehicleDamage {};
 		class firedHandler {};
 		class numberText {};
@@ -397,6 +400,8 @@ class Life_Client_Core
 		class crankSmoke {};
 		class setFuel {};
 		class onTakeItem {};
+		class localMapSystem {};
+		class createLocalVehicle {};
 	};
 
 	class Civilian

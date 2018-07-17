@@ -7,6 +7,7 @@ player addEventHandler["Respawn", {_this spawn life_fnc_onRespawn}];
 player addEventHandler["Put",{_this spawn life_fnc_moveItem;}];
 player addEventHandler["Take", {_this spawn life_fnc_onTakeItem}];
 player addEventHandler["InventoryOpened", {_this call life_fnc_inventoryOpened}];
+player addEventHandler["InventoryClosed", {_this call life_fnc_inventoryClosed}];
 player addEventHandler["HandleRating", {0}];
 player addEventHandler["FiredMan", {_this call life_fnc_firedHandler}];
 player addEventHandler["getInMan", {_this spawn life_fnc_getInVehicle; [] call life_fnc_updateViewDistance;}];

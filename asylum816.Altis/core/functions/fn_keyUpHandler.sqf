@@ -22,7 +22,7 @@ switch (_code) do
 	//Escape
 	case 1:
 	{
-		if (!isNull life_sitting) then { [] execVM "Chair\standup.sqf"; _handled = true; };
+		if (!isNull life_sitting) then { [] spawn life_fnc_standUp; _handled = true; };
 		if (life_targetTag) then { life_targetTag = false };
 	};
 	//1 Key
@@ -445,7 +445,7 @@ if (_code in (actionKeys "MoveForward")) then
 {
 	if (!isNull life_sitting) then
 	{
-		[] execVM "Chair\standup.sqf";
+		[] spawn life_fnc_standUp;
 		_handled = true;
 	};
 };

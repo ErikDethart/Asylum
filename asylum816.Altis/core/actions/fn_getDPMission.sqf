@@ -26,12 +26,13 @@ else
 if (!isNull life_delivery_object) then { deleteVehicle life_delivery_object };
 
 _nearVehicles = nearestObjects [(getMarkerPos format["%1_spawn",_target]),["Car","Truck","Air","Ship"],10];
-if(count _nearVehicles > 0) then
-    {
-    _handle = [format["<t align='center'>There appears to be a vehicle near the Delivery Point. It is recommended that you press cancel and move the vehicle away before beginning this mission. Continue anyway?</t>"]] spawn life_fnc_confirmMenu;
+life_confirm_response = true;
+if(count _nearVehicles > 0) then {
+	_handle = [format["<t align='center'>There appears to be a vehicle near the Delivery Point. It is recommended that you press cancel and move the vehicle away before beginning this mission. Continue anyway?</t>"]] spawn life_fnc_confirmMenu;
 	waitUntil {scriptDone _handle};
-	};
-	if(!life_confirm_response) exitWith {};
+};
+if(!life_confirm_response) exitWith {};
+life_confirm_response = nil;
 
 life_dp_start = _target;
 life_delivery_in_progress = true;

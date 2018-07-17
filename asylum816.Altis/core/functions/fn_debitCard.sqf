@@ -6,10 +6,8 @@
 	Routines for spending money in a place which allows debit
 */
 
-private ["_amount", "_success"];
-
-_amount = [_this,0,0,[0]] call BIS_fnc_param;
-_success = false;
+private _amount = param [0,0,[0]];
+private _success = false;
 
 if (life_corruptData) exitWith { hint "YOUR PLAYER DATA IS DAMAGED. You must log out to the lobby and rejoin. Your progress will not save until you do this. Most likely caused by a script-kiddie."; false; };
 
@@ -33,7 +31,7 @@ else
 		if (life_wanted > 500 && (time - life_last_wanted) > 300) then
 		{
 			life_last_wanted = time;
-[Str(life_wanted),name player,5] remoteExecCall ["life_fnc_clientMessage",-2];
+			[Str(life_wanted),name player,5] remoteExecCall ["life_fnc_clientMessage",-2];
 		};
 	}
 	else

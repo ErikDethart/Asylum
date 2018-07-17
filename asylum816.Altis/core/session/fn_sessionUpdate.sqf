@@ -24,7 +24,7 @@ if (life_corruptData || (life_moneyCache != (life_money / 2) + 5) || (life_atmmo
 	{
 		life_corruptData = true;
 		hint "YOUR CHARACTER DATA HAS BEEN CORRUPTED. Log out to the lobby and rejoin to fix this. None of your progress will be saved until this is done.";
-[911, player, "Money MEMORY HACK! Ban!"] remoteExecCall ["ASY_fnc_logIt",2];
+		[911, player, "Money MEMORY HACK! Ban!"] remoteExecCall ["ASY_fnc_logIt",2];
 	};
 };
 
